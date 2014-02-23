@@ -1,36 +1,39 @@
 // My Implementation of a node, for use in LinkedList type problems
 
-struct Node {
+class Node {
+  public:
     char value;
     Node* next;
     
     Node(char val) {
-        value = val;
-        next = NULL;
+        this->value = val;
+        this->next = NULL;
     }
     
-    Node(char val, Node * nex) {
-        value = val;
-        next = nex;
+    Node(char val, Node * next) {
+        this->value = val;
+        this->next = next;
     }
     
     Node(char * str) {
         if(str != NULL) {
-            value = *str;
-            next = ( *(str+1) == '\0' ? NULL : new Node(str+1) );
+            this->value = *str;
+            this->next = ( *(str+1) == '\0' ? NULL : new Node(str+1) );
         } else {
             throw "String Input cannot be NULL";
         }
     }
     
     ~Node() {
-        if( next != NULL ) delete next;
-        next = NULL;
+        if( this->next != NULL ) delete this->next;
+        this->next = NULL;
     }
     
     void printList() {
-        cout << value;
-        if(next == NULL) cout << endl;
-        else next->printList();
+        cout << this->value;
+        if(this->next == NULL)
+          cout << endl;
+        else
+          this->next->printList();
     }
 };
